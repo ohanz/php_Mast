@@ -4,7 +4,18 @@
 <body>
 
 <form action="wel_post.php" method="post">
-<h2>Name:</h2> <input type="text" name="name"><br/><br/>
+    <h1><u>Enter Details To Access</u></h1>
+<h2>Your Name:</h2> <input type="text" name="name"><br/>
+<h2>Phone Number:</h2> <input type="number" name="number"><br/>
+<br/>
+<h2>Age Range:</h2> <select id="selectid" name="ageRange">
+<option value="10-15">10-15</option>
+<option value="2">16-19</option>
+<option value="3">20-25</option>
+<option value="4">25-30</option>
+<option value="5">30+</option>
+</select><br/>
+<br/>
 <h2>E-mail:</h2> <input type="text" name="email"><br/><br/>
 <input type="submit">
 </form>
