@@ -8,7 +8,7 @@ input[type='text']{
    height: 35px;
 }
 input[type='radio']{
-   height: 20px;width: 20px;position: relative; left:5px;
+   height: 20px;width: 20px;position: relative; left:5px;font-weight: bold
 }
   div.gender span {
    position: relative; top:3px; left: 7px
@@ -17,8 +17,9 @@ div.gender input{
   position: relative; top: 5px; 
 }
 #spanComment {
-  position: relative; top: -20px
+  position: relative; top: -20px;
 }
+span{font-weight: bold}
 </style>
 </head>
 <body>  
@@ -32,19 +33,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
-    $name = test_input($_POST["name"]);
+    // $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed";
+    }
+    // elseif(!)
+    else {
+      // $modified = str_replace('$','',$name);
+      // $name = "";
+      // $name = $modified = test_input($_POST["name"]);
+      $name = preg_replace('/[^a-zA-Z0-9\s]/', '',strip_tags(html_entity_decode($_POST["name"]))) ;
+      // echo 'the user'. $name;
+      test_input($name);
+
+      // test_input($_POST["name"]);
+      // $name = test_input($_POST["name"]);
+
   }
+}
   
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
-    $email = test_input($_POST["email"]);
+    // $email = test_input($_POST["email"]);
+     // check if e-mail address is well-formed
+     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format";
+    } else $email = test_input($_POST["email"]);
   }
     
   if (empty($_POST["website"])) {
     $website = "";
   } else {
-    $website = test_input($_POST["website"]);
+    // $website = test_input($_POST["website"]);
+    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL";
+    } else $website = test_input($_POST["website"]);
   }
 
   if (empty($_POST["comment"])) {
@@ -93,6 +119,7 @@ function test_input($data) {
 
 <?php
 echo "<h2>Your Input:</h2>";
+// echo 'Username: '.$name;
 echo $name;
 echo "<br>";
 echo $email;
