@@ -141,6 +141,14 @@ echo $gender;
 <br/><span style="margin-right: 30px"> Back to Previous: <a href="myForm.htm">Form1</a></span>
 <a href="downloadImg2.php?file=sm.png">Download Image</a><br/>
 <a href="downloadImg2.php?file=pp.png">Download Image 2</a><br/><br/>
+<a href="downloadVid.php?file=soft-beat-sound.mp3">Download Hyper File</a><br/><br/>
+<a href="downloadFiles.php?file=hyper.php">Download Doc</a><br/><br/>
+<h2>Upload Files Here</h2><br/>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="document">
+    <button type="submit">Upload Now</button>
+</form>
+<br/><br/>
 
 </body>
 </html>
