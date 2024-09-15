@@ -150,5 +150,13 @@ echo $gender;
 </form>
 <br/><br/>
 
+<h2>Upload Allowed/Strict Files</h2><br/>
+<form action="uploadAdv.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="document">
+		<button type="submit">Upload</button>
+	</form>
+
+<br/><br/>
+
 </body>
 </html>
