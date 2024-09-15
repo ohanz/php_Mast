@@ -153,7 +153,15 @@ echo $gender;
 <h2>Upload Allowed/Strict Files</h2><br/>
 <form action="uploadAdv.php" method="post" enctype="multipart/form-data">
 		<input type="file" name="document">
-		<button type="submit">Upload</button>
+		<button type="submit">Upload Strict</button>
+	</form>
+
+<br/><br/>
+
+<h2>Upload Files To Be Encrypted</h2><br/>
+<form action="uploadProX.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="document">
+		<button type="submit">Upload Safe</button>
 	</form>
 
 <br/><br/>
