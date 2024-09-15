@@ -58,9 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     // $email = test_input($_POST["email"]);
      // check if e-mail address is well-formed
+     $email = test_input($_POST["email"]);
+     // check if e-mail address is well-formed
      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
-    } else $email = test_input($_POST["email"]);
+       $emailErr = "Invalid email format";
+     }
   }
     
   if (empty($_POST["website"])) {
@@ -68,9 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     // $website = test_input($_POST["website"]);
     // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    // if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+    //   $websiteErr = "Invalid URL";
+    // } else $website = test_input($_POST["website"]);
+    $website = test_input($_POST["website"]);
+    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
       $websiteErr = "Invalid URL";
-    } else $website = test_input($_POST["website"]);
+    }
   }
 
   if (empty($_POST["comment"])) {
@@ -111,7 +118,7 @@ function test_input($data) {
   <div class="gender">Gender:
   <input type="radio" name="gender" value="female"><span>Female</span>
   <input type="radio" name="gender" value="male"><span>Male</span>
-  <input type="radio" name="gender" value="other"><span>Hyper</span>
+  <input type="radio" name="gender" value="Hyper" <?php if (isset($gender) && $gender=="Hyper") echo "checked";?>><span>Hyper</span>
   <span class="error">* <?php echo $genderErr;?></span></div>
   <br><br>
   <input type="submit" name="submit" value="Submit">  
@@ -132,6 +139,7 @@ echo $gender;
 ?>
 
 <br/><span> Back to Previous: <a href="myForm.htm">Form1</a></span>
+<a href="downloadImg.php?file=sm.png">Download Image</a>
 
 </body>
 </html>
