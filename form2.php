@@ -138,8 +138,9 @@ echo "<br>";
 echo $gender;
 ?>
 
-<br/><span> Back to Previous: <a href="myForm.htm">Form1</a></span>
-<a href="downloadImg.php?file=sm.png">Download Image</a>
+<br/><span style="margin-right: 30px"> Back to Previous: <a href="myForm.htm">Form1</a></span>
+<a href="downloadImg2.php?file=sm.png">Download Image</a><br/>
+<a href="downloadImg2.php?file=pp.png">Download Image 2</a><br/><br/>
 
 </body>
 </html>
